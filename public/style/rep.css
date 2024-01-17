@@ -1,5 +1,5 @@
 body{
-    background: #F4F7FD;
+  background-image: linear-gradient( 111.4deg,  rgba(7,7,9,1) 6.5%, rgba(27,24,113,1) 93.2% );
     margin-top:20px;
 }
 
@@ -20,7 +20,7 @@ body{
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #ffffff;
+    background-color: #000000d2;
     background-clip: border-box;
     border: 1px solid #e6e4e9;
     border-radius: 8px;
@@ -51,7 +51,7 @@ body{
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #edf1fc;
+  background-color: #161717ca;
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
@@ -76,7 +76,7 @@ body{
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #fcfcfd;
+  background-color: #161717ca;
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
@@ -101,7 +101,7 @@ body{
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #e8faf8;
+  background-color: #161717ca;
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
@@ -126,7 +126,7 @@ body{
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #ebf7ff;
+  background-color: #161717ca;
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
@@ -151,7 +151,7 @@ body{
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: floralwhite;
+  background-color: rgb(62, 62, 61);
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
@@ -226,7 +226,7 @@ body{
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #ebedee;
+  background-color: #161717ca;
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
@@ -251,7 +251,7 @@ body{
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #f0fafb;
+  background-color: #161717ca;
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
@@ -278,7 +278,7 @@ body{
 }
 
 .widget-49 .widget-49-title-wrapper .widget-49-meeting-info .widget-49-pro-title {
-  color: #3c4142;
+  color: #feffff;
   font-size: 14px;
 }
 

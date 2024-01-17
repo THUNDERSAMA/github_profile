@@ -42,7 +42,7 @@ app.post("/repositories", async (req, res) => {
     console.log(uinfo);
     // Extract repository names
     const repositories = repositoriesResponse.data
-      .map(repo =>({name:repo.name,description:repo.description}))
+      .map(repo =>({name:repo.name,description:repo.description,url:repo.html_url}))
       .slice(startIndex, endIndex);
       console.log(repositories)
     // Fetch languages for each repository
@@ -121,5 +121,6 @@ app.get("/error", (req, res) => {
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server running on PORT 3000`);
 });
+

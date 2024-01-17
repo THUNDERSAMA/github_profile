@@ -9,10 +9,9 @@
 </head>
   <body>
     <div class="container">
-        <h1>Repositories of </h1>
-        <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+        <div class="p-5 mb-4 bg-body-tertiary rounded-3" style="background:#00000070;">
             <div class="container-fluid py-5">
-              <h1 class="display-5 fw-bold"><%= username %></h1>
+              <h1 class="display-5 fw-bold"><span class="badge bg-secondary"><%= username %></span></h1>
               <div class="row">
               <div class="col-md-4 fs-4">
               <img src='<%= uinfo.img %>' class="rounded-circle float-start" alt="..." style="width: 150px;">
@@ -27,7 +26,7 @@
                   </ul>
                 </div>
             </div>
-              <button class="btn btn-primary btn-lg" type="button">View in github</button>
+              <a class="btn btn-primary btn-lg" href="https://github.com/<%= username %>" >View in github</a>
             </div>
           </div>
         <div class="row">
@@ -45,14 +44,18 @@
                                     <span class="widget-49-date-month">apr</span>
                                 </div>
                                 <div class="widget-49-meeting-info">
-                                    <span class="widget-49-pro-title">PRO-08235 DeskOpe. Website</span>
+                                    <span class="widget-49-pro-title"><%= repo.repo.description!=null?repo.repo.description:'no description' %></span>
                                 </div>
                             </div>
                             <ol class="widget-49-meeting-points">
-                                <%= repo.languages.join(', ') %>
+                              <div class="d-flex flex-row mb-3">
+                              <% repo.languages.forEach(rex=> { %>
+                                <h6><span class="badge bg-primary"><%= rex %></span></h6>
+                                <% }); %>
+                              </div>
                             </ol>
                             <div class="widget-49-meeting-action">
-                                <a href="#" class="btn btn-sm btn-flash-border-primary">View All</a>
+                                <a href="#" class="btn btn-sm btn-flash-border-primary">View</a>
                             </div>
                         </div>
                     </div>
