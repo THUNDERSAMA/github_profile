@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>repositories</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="style/rep.css" rel="stylesheet">  
+</head>
+  <body>
+    <div class="container">
+        <h1>Repositories of </h1>
+        <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+            <div class="container-fluid py-5">
+              <h1 class="display-5 fw-bold"><%= username %></h1>
+              <div class="row">
+              <div class="col-md-4 fs-4">
+              <img src='<%= uinfo.img %>' class="rounded-circle float-start" alt="..." style="width: 150px;">
+            </div>
+              <div class="col-md-8 fs-4">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><h5>Name : <span class="badge bg-secondary"><%= uinfo.name %></span></h5></li>
+                    <li class="list-group-item"><h5>Followers : <span class="badge bg-secondary"><%= uinfo.followers %></span></h5></li>
+                    <li class="list-group-item"><h5>Following : <span class="badge bg-secondary"><%= uinfo.following %></span></h5></li>
+                    <li class="list-group-item"><h5>Public_repos : <span class="badge bg-secondary"><%= uinfo.public_repos %></span></h5></li>
+                  
+                  </ul>
+                </div>
+            </div>
+              <button class="btn btn-primary btn-lg" type="button">View in github</button>
+            </div>
+          </div>
+        <div class="row">
+            <% repositories.forEach(repo => { %>
+            <div class="col-lg-4">
+                <div class="card card-margin">
+                    <div class="card-header no-border">
+                        <h5 class="card-title"><%= repo.repo.name %></h5>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="widget-49">
+                            <div class="widget-49-title-wrapper">
+                                <div class="widget-49-date-primary">
+                                    <span class="widget-49-date-day">09</span>
+                                    <span class="widget-49-date-month">apr</span>
+                                </div>
+                                <div class="widget-49-meeting-info">
+                                    <span class="widget-49-pro-title">PRO-08235 DeskOpe. Website</span>
+                                </div>
+                            </div>
+                            <ol class="widget-49-meeting-points">
+                                <%= repo.languages.join(', ') %>
+                            </ol>
+                            <div class="widget-49-meeting-action">
+                                <a href="#" class="btn btn-sm btn-flash-border-primary">View All</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+           
+        </div>
+        <nav aria-label="..." class="navbar navbar-inverse navbar-fixed-bottom">
+            <ul class="pagination pagination-lg justify-content-center">
+              <li class="page-item active" aria-current="page">
+                <span class="page-link">1</span>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+            </ul>
+          </nav>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
