@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get("/", (req, res) => {
   res.render("index");
 });
-
+var uinfo={};
 // Route to handle form submission
 app.post("/repositories", async (req, res) => {
   try {
@@ -31,7 +31,7 @@ app.post("/repositories", async (req, res) => {
       `https://api.github.com/users/${username}`,
     );
     //console.log(repositoriesusername);
-    const uinfo={
+   uinfo={
      url:repositoriesusername.data.url,
      img:repositoriesusername.data.avatar_url,
      name:repositoriesusername.data.name,
@@ -104,6 +104,7 @@ app.get("/repositories/:username/:page", async (req, res) => {
     res.render("repositories", {
       repositories: languagesData,
       username,
+      uinfo,
     });
   } catch (error) {
     res.render("error", {
