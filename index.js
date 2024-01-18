@@ -9,11 +9,11 @@ var path = require('path')
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, 'public')));
-const proxy = {
-  protocol: 'http',
-  host: '46.10.209.230',
-  port: 8080
-}
+const accessToken = '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';
+
+const headers = {
+  Authorization: `Bearer ${accessToken}`,
+};
 app.get("/", (req, res) => {
   res.render("index");
 });
@@ -30,10 +30,10 @@ app.post("/repositories", async (req, res) => {
 
 
     const repositoriesResponse = await axios.get(
-      `https://api.github.com/users/${username}/repos`, 
+      `https://api.github.com/users/${username}/repos`,{ headers } 
     );
     const repositoriesusername = await axios.get(
-      `https://api.github.com/users/${username}`,
+      `https://api.github.com/users/${username}`,{ headers }
     );
 
    const uinfo={
@@ -49,7 +49,7 @@ app.post("/repositories", async (req, res) => {
       .slice(startIndex, endIndex);
     const languagesPromises = repositories.map(async (repo) => {
       const languagesResponse = await axios.get(
-        `https://api.github.com/repos/${username}/${repo.name}/languages`,
+        `https://api.github.com/repos/${username}/${repo.name}/languages`,{ headers }
       );
       return { repo, languages: Object.keys(languagesResponse.data) };
     });
@@ -83,10 +83,10 @@ app.get("/repositories/:username/:page", async (req, res) => {
     const endIndex = startIndex + perPage;
 
     const repositoriesResponse = await axios.get(
-      `https://api.github.com/users/${username}/repos`,
+      `https://api.github.com/users/${username}/repos`,{ headers }
     );
     const repositoriesusername = await axios.get(
-      `https://api.github.com/users/${username}`,
+      `https://api.github.com/users/${username}`,{ headers }
     );
     //console.log(repositoriesusername);
    const uinfo={
@@ -97,14 +97,14 @@ app.get("/repositories/:username/:page", async (req, res) => {
      following:repositoriesusername.data.following,
      public_repos:repositoriesusername.data.public_repos
     } ;
-console.log(username);
+//console.log(username);
     const repositories = repositoriesResponse.data
       .map(repo =>({name:repo.name,description:repo.description,url:repo.html_url}))
       .slice(startIndex, endIndex);
 
       const languagesPromises = repositories.map(async (repo) => {
         const languagesResponse = await axios.get(
-          `https://api.github.com/repos/${username}/${repo.name}/languages`,
+          `https://api.github.com/repos/${username}/${repo.name}/languages`,{ headers }
         );
         return { repo, languages: Object.keys(languagesResponse.data) };
       });
