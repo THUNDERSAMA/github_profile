@@ -13,9 +13,6 @@
   </p>
 </div>
 
-## note:-
-<p color="red">As rate limit for unauthenticated requests is 60 requests per hour. May be it's not available some time</p>
-
 ## Features
 
 - Search for a GitHub user's repositories
