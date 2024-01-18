@@ -10,11 +10,11 @@
   <body>
     <div class="container">
         <div class="p-5 mb-4 bg-body-tertiary rounded-3" style="background:#00000070;">
-            <div class="container-fluid py-5">
+            <div class="container-fluid py-5 ">
               <h1 class="display-5 fw-bold"><span class="badge bg-secondary"><%= username %></span></h1>
               <div class="row">
-              <div class="col-md-4 fs-4">
-              <img src='<%= uinfo.img %>' class="rounded-circle float-start" alt="..." style="width: 150px;">
+              <div class="col-md-4 fs-4 p-4">
+              <img src='<%= uinfo.img %>' class="rounded-circle mx-auto d-block" alt="..." style="width: 150px;">
             </div>
               <div class="col-md-8 fs-4">
                 <ul class="list-group list-group-flush">
@@ -24,9 +24,10 @@
                     <li class="list-group-item"><h5>Public_repos : <span class="badge bg-secondary"><%= uinfo.public_repos %></span></h5></li>
                   
                   </ul>
+                  <a class="btn btn-primary btn-lg" href="https://github.com/<%= username %>" >View in github</a>
                 </div>
             </div>
-              <a class="btn btn-primary btn-lg" href="https://github.com/<%= username %>" >View in github</a>
+              
             </div>
           </div>
         <div class="row">
@@ -48,14 +49,14 @@
                                 </div>
                             </div>
                             <ol class="widget-49-meeting-points">
-                              <div class="d-flex flex-row mb-3">
+                              <div class="d-flex flex-row mb-3 gap-2">
                               <% repo.languages.forEach(rex=> { %>
                                 <h6><span class="badge bg-primary"><%= rex %></span></h6>
                                 <% }); %>
                               </div>
                             </ol>
                             <div class="widget-49-meeting-action">
-                                <a href="#" class="btn btn-sm btn-flash-border-primary">View</a>
+                                <a href="#" class="btn btn-sm btn-primary">View</a>
                             </div>
                         </div>
                     </div>
@@ -66,11 +67,15 @@
         </div>
         <nav aria-label="..." class="navbar navbar-inverse navbar-fixed-bottom">
             <ul class="pagination pagination-lg justify-content-center">
+              <% for(var i=1; i < cpage; i++) { %>
+                <li class="page-item"><a class="page-link" href="/repositories/<%= username %>/<%= i %>"><%= i %></a></li>
+                <% } %>
               <li class="page-item active" aria-current="page">
-                <span class="page-link">1</span>
+                <span class="page-link"><%= cpage %></span>
               </li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <% for(var i=cpage+1; i <=tpage; i++) { %>
+              <li class="page-item"><a class="page-link" href="/repositories/<%= username %>/<%= i %>"><%= i %></a></li>
+              <% } %>
             </ul>
           </nav>
         </div>

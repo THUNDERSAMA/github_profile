@@ -3,7 +3,7 @@ const axios = require("axios");
  var path = require('path')
 
 const app = express();
-const PORT = 3000;
+const PORT = 3030;
 var path = require('path')
 
 app.use(express.urlencoded({ extended: true }));
@@ -13,13 +13,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get("/", (req, res) => {
   res.render("index");
 });
-var uinfo={};
+// var uinfo={};
+// var repositoriesResponse;
 // Route to handle form submission
 app.post("/repositories", async (req, res) => {
   try {
     const { username } = req.body;
     const page = 1;
-    const perPage = 8;
+    const perPage = 9;
     const startIndex = (page - 1) * perPage;
     const endIndex = startIndex + perPage;
 
@@ -31,7 +32,7 @@ app.post("/repositories", async (req, res) => {
       `https://api.github.com/users/${username}`,
     );
     //console.log(repositoriesusername);
-   uinfo={
+   const uinfo={
      url:repositoriesusername.data.url,
      img:repositoriesusername.data.avatar_url,
      name:repositoriesusername.data.name,
@@ -39,13 +40,9 @@ app.post("/repositories", async (req, res) => {
      following:repositoriesusername.data.following,
      public_repos:repositoriesusername.data.public_repos
     } ;
-    console.log(uinfo);
-    // Extract repository names
     const repositories = repositoriesResponse.data
       .map(repo =>({name:repo.name,description:repo.description,url:repo.html_url}))
       .slice(startIndex, endIndex);
-      console.log(repositories)
-    // Fetch languages for each repository
     const languagesPromises = repositories.map(async (repo) => {
       const languagesResponse = await axios.get(
         `https://api.github.com/repos/${username}/${repo.name}/languages`,
@@ -55,12 +52,15 @@ app.post("/repositories", async (req, res) => {
 
     // Wait for all promises to resolve
     const languagesData = await Promise.all(languagesPromises);
-
-    // Render the repositories page with languages
+    const cpage=1;
+    const tpage=(Math.ceil(repositoriesResponse.data.length/9));  
     res.render("repositories", {
       repositories: languagesData,
       username,
       uinfo,
+      cpage,
+      tpage
+
     });
   } catch (error) {
     console.log(error);
@@ -79,37 +79,50 @@ app.get("/repositories/:username/:page", async (req, res) => {
     const startIndex = (page - 1) * perPage;
     const endIndex = startIndex + perPage;
 
-    // Get user's repositories from GitHub API
+    //Get user's repositories from GitHub API
     const repositoriesResponse = await axios.get(
       `https://api.github.com/users/${username}/repos`,
     );
-
+    const repositoriesusername = await axios.get(
+      `https://api.github.com/users/${username}`,
+    );
+    //console.log(repositoriesusername);
+   const uinfo={
+     url:repositoriesusername.data.url,
+     img:repositoriesusername.data.avatar_url,
+     name:repositoriesusername.data.name,
+     followers:repositoriesusername.data.followers,
+     following:repositoriesusername.data.following,
+     public_repos:repositoriesusername.data.public_repos
+    } ;
+console.log(username);
     // Extract repository names
     const repositories = repositoriesResponse.data
-      .map((repo) => repo.name)
+      .map(repo =>({name:repo.name,description:repo.description,url:repo.html_url}))
       .slice(startIndex, endIndex);
 
-    // Fetch languages for each repository
-    const languagesPromises = repositories.map(async (repo) => {
-      const languagesResponse = await axios.get(
-        `https://api.github.com/repos/${username}/${repo}/languages`,
-      );
-      return { repo, languages: Object.keys(languagesResponse.data) };
-    });
-
-    // Wait for all promises to resolve
+      const languagesPromises = repositories.map(async (repo) => {
+        const languagesResponse = await axios.get(
+          `https://api.github.com/repos/${username}/${repo.name}/languages`,
+        );
+        return { repo, languages: Object.keys(languagesResponse.data) };
+      });
     const languagesData = await Promise.all(languagesPromises);
-
-    // Render the repositories page with languages
+    const cpage=1;
+    const tpage=(Math.ceil(repositoriesResponse.data.length/9));  
     res.render("repositories", {
       repositories: languagesData,
       username,
       uinfo,
+      cpage,
+      tpage
+
     });
   } catch (error) {
+    console.log(error);
     res.render("error", {
       error:
-        "Error fetching repositories. Make sure the username and page are correct.",
+        "Error fetching repositories. Make sure the username and page are correct."+error,
     });
   }
 });
