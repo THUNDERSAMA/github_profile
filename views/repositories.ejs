@@ -38,18 +38,18 @@
                         <h2 class="card-title"><span class="badge bg-warning"><%= repo.repo.name %></span></h2>
                     </div>
                     <div class="card-body pt-0">
-                        <div class="widget-49">
-                            <div class="widget-49-title-wrapper">
+                        <div class="card-sub">
+                            <div class="card-sub-title-wrapper">
                               
-                                <div class="widget-49-meeting-info">
-                                    <span class="widget-49-pro-title"><%= repo.repo.description!=null?repo.repo.description:'Sorry no description available' %></span>
+                                <div class="card-sub-meeting-info">
+                                    <span class="card-sub-pro-title"><%= repo.repo.description!=null?repo.repo.description:'Sorry no description available' %></span>
                                 </div>
                             </div>
-                            <div class="widget-49-meeting-action">
+                            <div class="card-sub-meeting-action p-2">
                                 <a href="<%= repo.repo.url %>" class="btn btn-lg btn-success">View</a>
                             </div>
 <div class="card-footer text-body-secondary">
-                            <ol class="widget-49-meeting-points">
+                            <ol class="card-sub-meeting-points">
                               <div class="d-flex flex-row mb-3 gap-2">
                               <% repo.languages.forEach(rex=> { %>
                                 <h4><span class="badge bg-info"><%= rex %></span></h4>
