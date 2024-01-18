@@ -1,8 +1,19 @@
-[View Demo](https://github-profile-nw3k.onrender.com/){: .btn .btn-blue }
+<div align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="https://play-lh.googleusercontent.com/PCpXdqvUWfCW1mXhH1Y_98yBpgsWxuTSTofy3NGMo9yBTATDyzVkqU580bfSln50bFU" alt="Logo" width="80" height="80">
+  </a>
 
-# GitHub Repository Search Engine
+  <h3 align="center">GitHub Repository Search Engine</h3>
 
-This is a simple web application built using Express.js and Axios that allows users to search for a GitHub user's repositories and view details about each repository, including its languages.
+  <p align="center">
+   This is a simple web application built using Express.js and Axios that allows users to search for a GitHub user's repositories and view details about each repository, including its languages.
+    <br />
+    <a href="[https://github.com/othneildrew/Best-README-Template](https://github-profile-nw3k.onrender.com/)"><strong>View Demo »</strong></a>
+    <br />
+  </p>
+</div>
+
+
 
 ## Features
 
