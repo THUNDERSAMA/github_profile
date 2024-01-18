@@ -14,11 +14,11 @@ body{
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    -webkit-border-radius: 50px;
-    border-radius: 50px;
+    border-radius: 8px;
     background: #373737;
     -webkit-box-shadow: 12px 12px 24px #2f2f2f, -12px -12px 24px #3f3f3f;
     box-shadow: 12px 12px 24px #2f2f2f, -12px -12px 24px #3f3f3f;
+    min-height: 24vh;
 }
 
 .card .card-header.no-border {
