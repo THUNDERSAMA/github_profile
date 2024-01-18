@@ -9,22 +9,28 @@ var path = require('path')
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, 'public')));
+const proxy = {
+  protocol: 'http',
+  host: '46.10.209.230',
+  port: 8080
+}
 app.get("/", (req, res) => {
   res.render("index");
 });
+
 // var uinfo={};
 // var repositoriesResponse;
 app.post("/repositories", async (req, res) => {
   try {
     const { username } = req.body;
     const page = 1;
-    const perPage = 9;
+    const perPage = 10;
     const startIndex = (page - 1) * perPage;
     const endIndex = startIndex + perPage;
 
 
     const repositoriesResponse = await axios.get(
-      `https://api.github.com/users/${username}/repos`,
+      `https://api.github.com/users/${username}/repos`, 
     );
     const repositoriesusername = await axios.get(
       `https://api.github.com/users/${username}`,
@@ -72,7 +78,7 @@ app.post("/repositories", async (req, res) => {
 app.get("/repositories/:username/:page", async (req, res) => {
   try {
     const { username, page } = req.params;
-    const perPage = 8;
+    const perPage = 10;
     const startIndex = (page - 1) * perPage;
     const endIndex = startIndex + perPage;
 

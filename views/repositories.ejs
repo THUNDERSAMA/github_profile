@@ -62,16 +62,21 @@
             <% }); %>
            
         </div>
+        <%= cpage %>
+        //
+        <%= tpage %>
         <nav aria-label="..." class="navbar navbar-inverse navbar-fixed-bottom">
             <ul class="pagination pagination-lg justify-content-center">
+             
               <% for(var i=1; i < cpage; i++) { %>
                 <li class="page-item"><a class="page-link" href="/repositories/<%= username %>/<%= i %>"><%= i %></a></li>
                 <% } %>
               <li class="page-item active" aria-current="page">
                 <span class="page-link"><%= cpage %></span>
               </li>
-              <% for(var i=cpage+1; i <=tpage; i++) { %>
-              <li class="page-item"><a class="page-link" href="/repositories/<%= username %>/<%= i %>"><%= i %></a></li>
+              <% for(var j=cpage+1; j <=tpage; j++) { %>
+                <%= j %>
+              <li class="page-item"><a class="page-link" href="/repositories/<%= username %>/<%= j %>"><%= j %></a></li>
               <% } %>
             </ul>
           </nav>
