@@ -34,7 +34,7 @@
             <% repositories.forEach(repo => { %>
             <div class="col-lg-6">
                 <div class="card card-margin">
-                    <div class="card-header no-border p-3">
+                    <div class="card-header p-3">
                         <h2 class="card-title"><span class="badge bg-warning"><%= repo.repo.name %></span></h2>
                     </div>
                     <div class="card-body pt-0">
@@ -45,6 +45,10 @@
                                     <span class="widget-49-pro-title"><%= repo.repo.description!=null?repo.repo.description:'Sorry no description available' %></span>
                                 </div>
                             </div>
+                            <div class="widget-49-meeting-action">
+                                <a href="<%= repo.repo.url %>" class="btn btn-lg btn-success">View</a>
+                            </div>
+<div class="card-footer text-body-secondary">
                             <ol class="widget-49-meeting-points">
                               <div class="d-flex flex-row mb-3 gap-2">
                               <% repo.languages.forEach(rex=> { %>
@@ -52,9 +56,7 @@
                                 <% }); %>
                               </div>
                             </ol>
-                            <div class="widget-49-meeting-action">
-                                <a href="<%= repo.repo.url %>" class="btn btn-lg btn-success">View</a>
-                            </div>
+                           </div>
                         </div>
                     </div>
                 </div>
