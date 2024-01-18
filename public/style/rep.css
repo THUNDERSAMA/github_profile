@@ -25,7 +25,6 @@ body{
     border: 0;
 }
 .card .card-header {
-    background: none;
     padding: 0 0.9375rem;
     font-weight: 500;
     display: flex;
@@ -274,7 +273,7 @@ body{
 
 .widget-49 .widget-49-title-wrapper .widget-49-meeting-info .widget-49-pro-title {
   color: #feffff;
-  font-size: 14px;
+  font-size: 1.2em;
 }
 
 .widget-49 .widget-49-title-wrapper .widget-49-meeting-info .widget-49-meeting-time {
