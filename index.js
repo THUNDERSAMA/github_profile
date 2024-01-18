@@ -9,13 +9,11 @@ var path = require('path')
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, 'public')));
-// Home route with a form to submit GitHub username
 app.get("/", (req, res) => {
   res.render("index");
 });
 // var uinfo={};
 // var repositoriesResponse;
-// Route to handle form submission
 app.post("/repositories", async (req, res) => {
   try {
     const { username } = req.body;
@@ -24,14 +22,14 @@ app.post("/repositories", async (req, res) => {
     const startIndex = (page - 1) * perPage;
     const endIndex = startIndex + perPage;
 
-    // Get user's repositories from GitHub API
+
     const repositoriesResponse = await axios.get(
       `https://api.github.com/users/${username}/repos`,
     );
     const repositoriesusername = await axios.get(
       `https://api.github.com/users/${username}`,
     );
-    //console.log(repositoriesusername);
+
    const uinfo={
      url:repositoriesusername.data.url,
      img:repositoriesusername.data.avatar_url,
@@ -50,7 +48,7 @@ app.post("/repositories", async (req, res) => {
       return { repo, languages: Object.keys(languagesResponse.data) };
     });
 
-    // Wait for all promises to resolve
+
     const languagesData = await Promise.all(languagesPromises);
     const cpage=1;
     const tpage=(Math.ceil(repositoriesResponse.data.length/9));  
@@ -71,7 +69,6 @@ app.post("/repositories", async (req, res) => {
   }
 });
 
-// Route to display repositories with languages
 app.get("/repositories/:username/:page", async (req, res) => {
   try {
     const { username, page } = req.params;
@@ -79,7 +76,6 @@ app.get("/repositories/:username/:page", async (req, res) => {
     const startIndex = (page - 1) * perPage;
     const endIndex = startIndex + perPage;
 
-    //Get user's repositories from GitHub API
     const repositoriesResponse = await axios.get(
       `https://api.github.com/users/${username}/repos`,
     );
@@ -96,7 +92,6 @@ app.get("/repositories/:username/:page", async (req, res) => {
      public_repos:repositoriesusername.data.public_repos
     } ;
 console.log(username);
-    // Extract repository names
     const repositories = repositoriesResponse.data
       .map(repo =>({name:repo.name,description:repo.description,url:repo.html_url}))
       .slice(startIndex, endIndex);
@@ -108,7 +103,7 @@ console.log(username);
         return { repo, languages: Object.keys(languagesResponse.data) };
       });
     const languagesData = await Promise.all(languagesPromises);
-    const cpage=1;
+    const cpage=page;
     const tpage=(Math.ceil(repositoriesResponse.data.length/9));  
     res.render("repositories", {
       repositories: languagesData,
@@ -127,12 +122,10 @@ console.log(username);
   }
 });
 
-// Error page
 app.get("/error", (req, res) => {
   res.render("error", { error: "An error occurred." });
 });
 
-// Start the server
 app.listen(PORT, () => {
   console.log(`Server running on PORT 3000`);
 });

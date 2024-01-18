@@ -24,7 +24,7 @@
                     <li class="list-group-item"><h5>Public_repos : <span class="badge bg-secondary"><%= uinfo.public_repos %></span></h5></li>
                   
                   </ul>
-                  <a class="btn btn-primary btn-lg" href="https://github.com/<%= username %>" >View in github</a>
+                  <a class="btn btn-primary btn-lg m-4" href="https://github.com/<%= username %>" >View in github</a>
                 </div>
             </div>
               
@@ -40,10 +40,7 @@
                     <div class="card-body pt-0">
                         <div class="widget-49">
                             <div class="widget-49-title-wrapper">
-                                <div class="widget-49-date-primary">
-                                    <span class="widget-49-date-day">09</span>
-                                    <span class="widget-49-date-month">apr</span>
-                                </div>
+                              
                                 <div class="widget-49-meeting-info">
                                     <span class="widget-49-pro-title"><%= repo.repo.description!=null?repo.repo.description:'Sorry no description available' %></span>
                                 </div>
@@ -56,7 +53,7 @@
                               </div>
                             </ol>
                             <div class="widget-49-meeting-action">
-                                <a href="#" class="btn btn-sm btn-primary">View</a>
+                                <a href="<%= repo.repo.url %>" class="btn btn-sm btn-primary">View</a>
                             </div>
                         </div>
                     </div>
