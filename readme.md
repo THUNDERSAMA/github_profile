@@ -8,7 +8,7 @@
   <p align="center">
    This is a simple web application built using Express.js and Axios that allows users to search for a GitHub user's repositories and view details about each repository, including its languages.
     <br />
-    <a href="[https://github.com/othneildrew/Best-README-Template](https://github-profile-nw3k.onrender.com/)"><strong>View Demo »</strong></a>
+    <a href="https://github-profile-nw3k.onrender.com/"><strong>View Demo »</strong></a>
     <br />
   </p>
 </div>
