@@ -9,7 +9,7 @@ var path = require('path')
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, 'public')));
-const accessToken = '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';
+const accessToken = process.env.scraptoken;
 
 const headers = {
   Authorization: `Bearer ${accessToken}`,
